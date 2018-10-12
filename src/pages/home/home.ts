@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Logger } from '../../providers/logger/logger';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +7,13 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(private log: Logger) {
 
   }
 
+
+  public clickFct(){
+    this.log.debug("hey test")
+    this.log.fatal("wtf")
+  }
 }
