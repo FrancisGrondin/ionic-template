@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Logger } from '../../providers/logger/logger';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'page-home',
@@ -7,13 +8,19 @@ import { Logger } from '../../providers/logger/logger';
 })
 export class HomePage {
 
-  constructor(private log: Logger) {
+  private language: string;
+  private otherLanguage: string;
 
+  constructor(private log: Logger, private translate: TranslateService) {
+    this.language = this.translate.currentLang;
+    this.otherLanguage = this.translate.langs.filter(x => x != this.language)[0];
   }
 
+  private async switchLanguage(): Promise<void> {
+    await this.translate.use(this.otherLanguage).toPromise();
+    this.language = this.translate.currentLang;
+    this.log.debug(`Current language: ${this.language}`);
 
-  public clickFct(){
-    this.log.debug("hey test")
-    this.log.fatal("wtf")
+    this.otherLanguage = this.translate.langs.filter(x => x != this.language)[0];
   }
 }

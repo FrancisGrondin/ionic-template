@@ -4,7 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { TranslateService } from '@ngx-translate/core';
+import { Page1 } from '../pages/page1/page1';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,15 +15,15 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public translate: TranslateService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'pages.home.title', component: HomePage },
+      { title: 'pages.page1.title', component: Page1 }
     ];
 
   }
@@ -33,7 +34,15 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
     });
+    this.translate.addLangs(['en', 'fr']);
+
+    // this language will be used as a fallback when a translation isn't found in the current language
+    this.translate.setDefaultLang('en');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    this.translate.use('en');
   }
 
   openPage(page) {

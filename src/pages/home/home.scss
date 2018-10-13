@@ -1,3 +1,6 @@
 page-home {
-
+    .language-button{
+        margin: 0% 0% 0% 40%;
+        color: map-get($colors, dark);
+    }
 }

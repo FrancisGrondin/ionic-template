@@ -1,0 +1,16 @@
+{
+    "action": {},
+    "app": {
+        "menu": "Menu"
+    },
+    "pages": {
+        "home": {
+            "title": "Home"
+        },
+        "page1":{
+            "title": "Page1"
+        }
+    },
+    "components": {},
+    "providers": {}
+}

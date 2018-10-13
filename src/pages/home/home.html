@@ -3,13 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>title</ion-title>
+    <ion-title>{{ 'pages.home.title' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <button ion-button secondary (click)="clickFct()">'app.test'  translate </button>
+  <ion-row>
+    <ion-col col-1 offset-11>
+      <button ion-button large class='language-button' (click)="switchLanguage()">{{ otherLanguage }}</button>
+    </ion-col>
+  </ion-row>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>
